@@ -31,7 +31,7 @@ a github that contains every currently working game that you can cheese on disco
 4. and your discord presence will show the game.
 
 ### how it works:
-it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run.
+it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds. 
 
 <details>
   <summary>disclaimer: using this method breaks discord's Paid Services Terms</summary>
@@ -40,5 +40,5 @@ it exploits how discord only checks if the executable matches a specific name fo
 
   This states that using other methods to obtain orbs (with this method being relevant) may get your account suspended.
 
-  As of we know, there are no known suspensions for people using this method, so it is safe, but if you choose to care so much about your account, you might wanna reconsider using this method.
+  As of we know, there are no known suspensions for people using this method, so it is safe, since you let the executable run for 15 minutes (which is the standard time for play quests), but if you choose to care so much about your account, you might wanna reconsider using this method.
 </details>
