@@ -23,7 +23,7 @@ a github that contains every currently working game that you can cheese on disco
 ### how to use
 > note: all of these have been tested and confirmed to work.
 
-> all of the executables are a renamed executable of `7zG.exe` from 7-zip
+> all of the executables are a renamed executable of `7zG.exe` from 7-zip. it's very lightweight, only being around 707 kb, which is practically nothing to a computer
 
 1. download the github repo (any way)
 2. choose the game you want to cheese
