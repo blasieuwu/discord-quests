@@ -19,6 +19,7 @@ a github that contains every currently working game that you can cheese on disco
 | Wuthering Waves | `games/Win64/Wuthering Waves.exe` |
 | Yu-Gi-Oh!  MASTER DUEL | `games/Yu-Gi-Oh!  MASTER DUEL` |
 | Zenless Zone Zero | `games/ZenlessZoneZero Game` |
+| Old School RuneScape | `games/Old School RuneScape` |
 
 ### how to use
 > note: all of these have been tested and confirmed to work.
