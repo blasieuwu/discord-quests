@@ -20,6 +20,7 @@ a github that contains every currently working game that you can cheese on disco
 | Yu-Gi-Oh!  MASTER DUEL | `games/Yu-Gi-Oh!  MASTER DUEL` |
 | Zenless Zone Zero | `games/ZenlessZoneZero Game` |
 | Old School RuneScape | `games/Old School RuneScape` |
+| Delta Force | `games/Delta Force` |
 
 ### how to use
 > note: all of these have been tested and confirmed to work.
