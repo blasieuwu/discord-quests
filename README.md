@@ -21,6 +21,7 @@ a github that contains every currently working game that you can cheese on disco
 | Zenless Zone Zero | `games/ZenlessZoneZero Game` |
 | Old School RuneScape | `games/Old School RuneScape` |
 | Delta Force | `games/Delta Force` |
+| RuneScape | `games/Jagex Launcher` |
 
 ### how to use
 > note: all of these have been tested and confirmed to work.
