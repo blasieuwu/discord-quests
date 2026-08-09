@@ -5,6 +5,16 @@ a github that contains every currently working game that you can cheese on disco
   <img src="https://img.shields.io/badge/Discord_Quests-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord Quests" />
 </p>
 
+### how to use
+> note: all of these have been tested and confirmed to work.
+
+> all of the executables are a renamed executable of `7zG.exe` from 7-zip. it's very lightweight, only being around 707 kb, which is practically nothing to a computer
+
+1. download the github repo (any way)
+2. choose the game you want to cheese
+3. open the coresponding `.exe` in that game folder
+4. and your discord presence will show the game.
+
 ### currently supported games
 
 | game | path |
@@ -24,16 +34,6 @@ a github that contains every currently working game that you can cheese on disco
 | RuneScape | `games/Jagex Launcher` |
 | The EVE Online Experience | `games/EVE` |
 | Ragnarok: The New World | `games/Ragnarok The New World` |
-
-### how to use
-> note: all of these have been tested and confirmed to work.
-
-> all of the executables are a renamed executable of `7zG.exe` from 7-zip. it's very lightweight, only being around 707 kb, which is practically nothing to a computer
-
-1. download the github repo (any way)
-2. choose the game you want to cheese
-3. open the coresponding `.exe` in that game folder
-4. and your discord presence will show the game.
 
 ### how it works:
 it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds. 
