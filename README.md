@@ -23,6 +23,7 @@ a github that contains every currently working game that you can cheese on disco
 | Delta Force | `games/Delta Force` |
 | RuneScape | `games/Jagex Launcher` |
 | The EVE Online Experience | `games/EVE` |
+| Ragnarok: The New World | `games/Ragnarok The New World` |
 
 ### how to use
 > note: all of these have been tested and confirmed to work.
