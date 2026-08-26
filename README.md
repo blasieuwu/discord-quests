@@ -34,6 +34,7 @@ a github that contains every currently working game that you can cheese on disco
 | RuneScape | `games/Jagex Launcher` |
 | The EVE Online Experience | `games/EVE` |
 | Ragnarok: The New World | `games/Ragnarok The New World` |
+| MARVEL SNAP | `games/MARVEL SNAP` |
 
 ### how it works:
 it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds. 
