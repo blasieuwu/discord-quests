@@ -16,25 +16,7 @@ a github that contains every currently working game that you can cheese on disco
 4. and your discord presence will show the game.
 
 ### currently supported games
-
-| game | path |
-| :-- | :-- |
-| Duet Night Abyss | `games/Duet Night Abyss` |
-| EA SPORTS FC 26 | `games/EA SPORTS FC 26` |
-| Where Winds Meet | `games/Engine/Binaries/Win64r/wwm.exe` |
-| Arknights: ENDFIELD | `games/Game/Endfield.exe` |
-| NTE (Neverness To Everness) | `games/Neverness To Everness` |
-| Once Human | `games/Once Human` |
-| Rune Dice | `games/Rune Dice` |
-| Wuthering Waves | `games/Win64/Wuthering Waves.exe` |
-| Yu-Gi-Oh!  MASTER DUEL | `games/Yu-Gi-Oh!  MASTER DUEL` |
-| Zenless Zone Zero | `games/ZenlessZoneZero Game` |
-| Old School RuneScape | `games/Old School RuneScape` |
-| Delta Force | `games/Delta Force` |
-| RuneScape | `games/Jagex Launcher` |
-| The EVE Online Experience | `games/EVE` |
-| Ragnarok: The New World | `games/Ragnarok The New World` |
-| MARVEL SNAP | `games/MARVEL SNAP` |
+just visit the [discord-orb-games](/discord-orb-games/) folder to see all supported games
 
 ### how it works:
 it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds. 
