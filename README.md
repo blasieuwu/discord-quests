@@ -19,7 +19,20 @@ a github that contains every currently working game that you can cheese on disco
 just visit the [discord-orb-games](/discord-orb-games/) folder to see all supported games
 
 ### how it works:
-it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds. 
+it exploits how discord only checks if the executable matches a specific name for a game, and the file location in which said executable was run. it doesn't use code, nor any technical stuff, just smart workarounds.
+
+#### the promises of this method:
+1. it cannot and **will never be able** to collect data from you.
+2. it is extremely lightweight in terms of storage
+3. will never put your account at risk*
+4. straightforward process
+5. always** up-to-date
+
+*it can technically pose a threat to your account, but very, **VERY** unlikely that you will ever get warned for it
+
+**updates can be delayed, but likely not more than 48h of the inital quest introduction
+
+usage disclaimer: **by using this method, you agree that *blasie (@blasieuwu)* is not responsible for any damages or penalties done to your account.**
 
 <details>
   <summary>disclaimer: using this method breaks discord's Paid Services Terms</summary>
