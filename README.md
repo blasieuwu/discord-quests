@@ -43,3 +43,13 @@ usage disclaimer: **by using this method, you agree that *blasie (@blasieuwu)* i
 
   As of we know, there are no known suspensions for people using this method, so it is safe, since you let the executable run for 15 minutes (which is the standard time for play quests), but if you choose to care so much about your account, you might wanna reconsider using this method.
 </details>
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=blasieuwu%2Fdiscord-quests&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=blasieuwu/discord-quests&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=blasieuwu/discord-quests&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=blasieuwu/discord-quests&type=date&legend=top-left" />
+ </picture>
+</a>
