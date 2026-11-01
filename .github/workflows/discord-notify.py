@@ -97,7 +97,7 @@ payload = {
         },
         {
           "type": 10,
-          "content": "-# <a:blasieuwu:1566439835013480579> [**@blasieuwu** 𐔌՞. .՞𐦯](https://blasieuwu.neocities.org) (creator) - not affiliated with GitHub"
+          "content": "-# <a:blasieuwu:1566439835013480579> [**@blasieuwu 𐔌՞. .՞𐦯**](https://blasieuwu.neocities.org) (creator) - not affiliated with GitHub"
         }
       ]
     }
