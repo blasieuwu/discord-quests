@@ -61,7 +61,7 @@ jobs:
           
           for data in commits_list:
             short_shas.append(data["sha"][:7])
-            sha_links.append(f"https://github.com/{repository}/commits/{data["sha"]}")
+            sha_links.append(f"https://github.com/{repository}/commits/{data['sha']}")
             usernames.append(data["username"])
             
             parts = data["message"].split("\n", maxsplit=1)
@@ -85,7 +85,7 @@ jobs:
               "parse": [],
               "users": [],
               "roles": [],
-              "replied_user": false
+              "replied_user": False
             },
             "components": [
               {
