@@ -32,18 +32,6 @@ it exploits how discord only checks if the executable matches a specific name fo
 > 
 > <p id="update-disclaimer">**updates can be delayed, but likely not more than 48h of the inital quest introduction</p>
 
-usage disclaimer: **by using this method, you agree that *blasie (@blasieuwu)* is not responsible for any damages or penalties done to your account.**
-
-<details>
-  <summary>disclaimer: using this method breaks discord's Paid Services Terms</summary>
-
-  As stated in [Section #14 of the Paid Service Terms of Discord](https://discord.com/terms/paid-services-terms#14) (known as the Discord Orbs Section), you may not **use automated systems or bots to accumulate Discord Orbs,** nor can you **manipulate the Discord Orbs system or exploit bugs to gain unfair advantages.**
-
-  This states that using other methods to obtain orbs (with this method being relevant) may get your account suspended.
-
-  As of we know, there are no known suspensions for people using this method, so it is safe, since you let the executable run for 15 minutes (which is the standard time for play quests), but if you choose to care so much about your account, you might wanna reconsider using this method.
-</details>
-
 ## Star History
 
 <a href="https://www.star-history.com/?repos=blasieuwu%2Fdiscord-quests&type=date&legend=top-left">
