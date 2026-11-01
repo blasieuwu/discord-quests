@@ -1,106 +1,126 @@
-name: discord notify
+name: notify discord
 
-on:
-  push:
-    branches:
-      - main
+on: push # apply this to every branch
 
 jobs:
-  notify:
+  post-message:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '--workflow-off')"
+    if: "!contains(github.event.head_commit.message, '# discord-notify: no-run')"
     steps:
-      - name: send discord message
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+
+      - name: install dependencies
+        run: pip install httpx
+
+      - name: notify
         env:
-          ACTOR: ${{ github.actor }}
-          REPO_FULL: ${{ github.repository }}
+          ACTOR: ${{ github.actor }} 
+          REPO_FULL: ${{ github.repository }} 
           BRANCH: ${{ github.ref_name }}
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
-          SHORT_SHA: ${{ github.event.head_commit.id }}
-          COMMITS_JSON: ${{ toJson(github.event.commits) }}
-          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }} 
         run: |
-          # extract repo owner from "owner/repo"
-          REPO_OWNER=$(echo "$REPO_FULL" | cut -d'/' -f1)
+          from httpx import HTTPStatusError
+          import httpx
+          import json
+          import os
 
-          SHORT_SHA_TRIMMED="${SHORT_SHA:0:7}"
-          CLEAN_MSG=$(echo "$COMMIT_MSG" | head -n 1)
+          # get our env vars first
+          repository = os.environ.get("REPO_FULL")
+          webhook = os.environ.get("WEBHOOK_URL")
+          actor = os.environ.get("ACTOR")
+          branch = os.environ.get("BRANCH")
+          event_path = os.environ.get("GITHUB_EVENT_PATH")
 
-          # count total commits safely using env var
-          COMMIT_COUNT=$(echo "$COMMITS_JSON" | jq 'length')
+          # own variables
+          commits_list: list[dict[str, str]] = []
+
+          if event_path and os.path.exists(event_path):
+            with open(event_path, "r", encoding='utf-8') as f:
+              event_data = json.load(f)
+
+              commits = event_data.get("commits", [])
+              for commit in commits:
+                commits_list.append({
+                  "sha": commit["id"],
+                  "message": commit["message"],
+                  "username": commit["author"]["username"]
+                })
+
+          # do the stuff
+          commits_list.reverse() # latest commit is at the top
+          commit_count = len(commits_list)
+          short_shas = []
+          sha_links = []
+          usernames = []
+          msg_header = []
+          msg_desc = []
           
-          # fallback to 1 if commits array is empty (e.g. forced pushes or edge cases)
-          if [ -z "$COMMIT_COUNT" ] || [ "$COMMIT_COUNT" -eq 0 ]; then
-            COMMIT_COUNT=1
-          fi
+          for data in commits_list:
+            short_shas.append(data["sha"][:7])
+            sha_links.append(f"https://github.com/{repository}/commits/{data["sha"]}")
+            usernames.append(data["username"])
+            
+            parts = data["message"].split("\n", maxsplit=1)
+            header = parts[0]
+            description = parts[1][:90] + "..." if len(parts) > 1 else ""
+            msg_header.append(header)
+            msg_desc.append(description)
+          
+          messages: list[str] = []
+          for sha, author, commit_link, heading, desc in zip(short_shas, usernames, sha_links, msg_header, msg_desc):
+            messages.append(f"- [`[{sha}]`]({commit_link}) - {heading} | @{author}\n  - {desc}")
 
-          # pluralize text dynamically
-          if [ "$COMMIT_COUNT" -eq 1 ]; then
-            COMMIT_TEXT="1 new commit"
-          else
-            COMMIT_TEXT="$COMMIT_COUNT new commits"
-          fi
+          embed_header = f"<:github:1535885661683589161> │ GitHub Workflows/Actions\n# [[{repository} - {branch}] {commit_count} new {'commits' if commit_count > 1 else "commit"}](https://github.com/{repository}/tree/{branch})"
 
-          # build full target urls
-          REPO_URL="https://github.com/$REPO_FULL/tree/$BRANCH"
-          COMMIT_URL="https://github.com/$REPO_FULL/commit/$SHORT_SHA"
+          payload = {
+            "username": "GitHub",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "tts": False,
+            "flags": 32768,
+            "allowed_mentions": {
+              "parse": [],
+              "users": [],
+              "roles": [],
+              "replied_user": false
+            },
+            "components": [
+              {
+                "type": 17,
+                "spoiler": False,
+                "components": [
+                  {
+                    "type": 10,
+                    "content": embed_header
+                  },
+                  {
+                    "type": 14,
+                    "divider": True,
+                    "spacing": 1
+                  },
+                  {
+                    "type": 10,
+                    "content": "\n".join(messages)
+                  },
+                  {
+                    "type": 14,
+                    "divider": True,
+                    "spacing": 1
+                  },
+                  {
+                    "type": 10,
+                    "content": "-# <a:blasieuwu:1566439835013480579> [@blasieuwu](https://blasieuwu.neocities.org) (creator) - not affiliated with GitHub"
+                  }
+                ]
+              }
+            ]
+          }
 
-          PAYLOAD=$(jq -n \
-            --arg owner "$REPO_OWNER" \
-            --arg actor "$ACTOR" \
-            --arg repo "$REPO_FULL" \
-            --arg branch "$BRANCH" \
-            --arg msg "$CLEAN_MSG" \
-            --arg sha "$SHORT_SHA_TRIMMED" \
-            --arg count_text "$COMMIT_TEXT" \
-            --arg repo_url "$REPO_URL" \
-            --arg commit_url "$COMMIT_URL" \
-            '{
-              username: "GitHub Actions",
-              avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-              flags: 32768,
-              components: [
-                {
-                  type: 17,
-                  accent_color: 9895830,
-                  components: [
-                    {
-                      type: 10,
-                      content: "<:github:1535885661683589161> changes in **\($owner)**'\''s repositories:\n## [[\($repo) • \($branch)] \($count_text)](\($repo_url))\n"
-                    },
-                    {
-                      type: 14,
-                      divider: true,
-                      spacing: 1
-                    },
-                    {
-                      type: 10,
-                      content: "- [[`\($sha)`](\($commit_url))] \($msg) • **\($actor)**"
-                    },
-                    {
-                      type: 14,
-                      divider: true,
-                      spacing: 1
-                    },
-                    {
-                      type: 10,
-                      content: "-# embed made by [@blasieuwu](https://blasieuwu.neocities.org)"
-                    }
-                  ]
-                }
-              ]
-            }')
+          res = httpx.post(f"{webhook}?with_components=true", json=payload)
 
-          TARGET_URL="${WEBHOOK_URL}?with_components=true"
-
-          response=$(curl -s -o /tmp/discord_res.txt -w "%{http_code}" \
-            -H "Content-Type: application/json" \
-            -X POST \
-            -d "$PAYLOAD" \
-            "$TARGET_URL")
-
-          if [ "$response" -ne 200 ] && [ "$response" -ne 204 ]; then
-            echo "discord webhook failed with http $response"
-            cat /tmp/discord_res.txt
-            exit 1
-          fi
+          if res.status_code not in (200, 204):
+            raise HTTPStatusError(f"discord webhook failed to send with error {res.status_code}", response=res, request=res.request)
+          # <end of file>
