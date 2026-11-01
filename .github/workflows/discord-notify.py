@@ -57,7 +57,7 @@ for data in commits_list:
 
 messages: list[str] = []
 for commit in commits:
-  messages.append(f"- [`[{commit.sha}]`]({commit.link}) - {commit.header} | **@{commit.author}**{f"\n  - commit.description" if commit.description != None else ""}")
+  messages.append(f"- [`[{commit.sha}]`]({commit.link}) - {commit.header} | **@{commit.author}**{f"\n  - {commit.description}" if commit.description != None else ""}")
 
 embed_header = f"<:github:1535885661683589161> │ GitHub Workflows/Actions\n# [[{repo.name} - {repo.branch}] {commit_count} new {'commits' if commit_count > 1 else "commit"}]({repo.link}/tree/{repo.branch})"
 
@@ -97,7 +97,7 @@ payload = {
         },
         {
           "type": 10,
-          "content": "-# <a:blasieuwu:1566439835013480579> [@blasieuwu](https://blasieuwu.neocities.org) (creator) - not affiliated with GitHub"
+          "content": "-# <a:blasieuwu:1566439835013480579> [**@blasieuwu** 𐔌՞. .՞𐦯](https://blasieuwu.neocities.org) (creator) - not affiliated with GitHub"
         }
       ]
     }
