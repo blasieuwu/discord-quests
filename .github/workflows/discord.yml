@@ -66,13 +66,13 @@ jobs:
             
             parts = data["message"].split("\n", maxsplit=1)
             header = parts[0]
-            description = parts[1][:90] + "..." if len(parts) > 1 else None
+            description = parts[1][:100] + "..." if len(parts) > 1 else None
             msg_header.append(header)
             msg_desc.append(description)
           
           messages: list[str] = []
           for sha, author, commit_link, heading, desc in zip(short_shas, usernames, sha_links, msg_header, msg_desc):
-            messages.append(f"- [`[{sha}]`]({commit_link}) - {heading} | @{author}{"\n  - " if desc != None else ""}{desc if desc != None else ""}")
+            messages.append(f"- [`[{sha}]`]({commit_link}) - {heading} | @{author}{"\n" if desc != None else ""}{desc if desc != None else ""}")
 
           embed_header = f"<:github:1535885661683589161> │ GitHub Workflows/Actions\n# [[{repository} - {branch}] {commit_count} new {'commits' if commit_count > 1 else "commit"}](https://github.com/{repository}/tree/{branch})"
 
