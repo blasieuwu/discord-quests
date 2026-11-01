@@ -3,10 +3,13 @@ name: "discord notification // v1.0.0"
 on: push # apply this to every branch
 
 jobs:
-  post-message:
+  send-message:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '# discord-notify: no-run')"
     steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+    
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -21,4 +24,4 @@ jobs:
           REPO_FULL: ${{ github.repository }} 
           BRANCH: ${{ github.ref_name }}
           WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }} 
-        run: python discord-notify.py
+        run: python .github/workflows/discord-notify.py
