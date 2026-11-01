@@ -22,6 +22,7 @@ jobs:
           BRANCH: ${{ github.ref_name }}
           WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }} 
         run: |
+          python3 - << 'EOF'
           from httpx import HTTPStatusError
           import httpx
           import json
