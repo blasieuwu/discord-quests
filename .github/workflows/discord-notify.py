@@ -51,13 +51,13 @@ for data in commits_list:
   description = parts[1][:100] if len(parts) > 1 else None
   
   if description is not None:
-    description += "..." if len(description) == 100 else "" # type: ignore | reason: unsupported operators (None)
+    description += "..." if len(description) == 100 else ""
 
   commits.append(GitHubCommit(sha, username, sha_link, header, description))
 
 messages: list[str] = []
 for commit in commits:
-  messages.append(f"- [`[{commit.sha}]`]({commit.link}) - {commit.header} | **@{commit.author}**{"\n" if commit.description != None else ""}{commit.description if commit.description != None else ""}")
+  messages.append(f"- [`[{commit.sha}]`]({commit.link}) - {commit.header} | **@{commit.author}**{f"\n  - commit.description" if commit.description != None else ""}")
 
 embed_header = f"<:github:1535885661683589161> │ GitHub Workflows/Actions\n# [[{repo.name} - {repo.branch}] {commit_count} new {'commits' if commit_count > 1 else "commit"}]({repo.link}/tree/{repo.branch})"
 
