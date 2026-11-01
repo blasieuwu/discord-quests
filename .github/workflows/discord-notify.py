@@ -49,7 +49,9 @@ for data in commits_list:
   parts = data["message"].split("\n", maxsplit=1)
   header = parts[0]
   description = parts[1][:100] if len(parts) > 1 else None
-  description += "..." if len(description) == 100 and description != None else None # type: ignore | reason: unsupported operators (None)
+  
+  if description is not None:
+    description += "..." if len(description) == 100 else "" # type: ignore | reason: unsupported operators (None)
 
   commits.append(GitHubCommit(sha, username, sha_link, header, description))
 
